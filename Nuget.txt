@@ -1,0 +1,11 @@
+Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.EntityFrameworkCore.SqlServer
+version 5.0.17
+
+PagedList.Core
+AspNetCoreHero.ToastNotification
+version lastest
+
+Scaffold-DbContext "Server=<YourServerName>;Database=dksm_cosmetic;User ID=<user>;pwd='<password>';Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models

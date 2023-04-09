@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSKMCosmetic", "DSKMCosmetic\DSKMCosmetic.csproj", "{4AD511F8-9CF7-4BF0-83C5-A318F7DE6997}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AD511F8-9CF7-4BF0-83C5-A318F7DE6997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AD511F8-9CF7-4BF0-83C5-A318F7DE6997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AD511F8-9CF7-4BF0-83C5-A318F7DE6997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AD511F8-9CF7-4BF0-83C5-A318F7DE6997}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1270CDA8-79F1-444D-B390-2C2E8397D4F2}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,37 @@
+﻿@model List<Product>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>
+                <div class="d-flex align-items-center">
+                    <h6 class="m-b-0 m-l-10">@item.ProductName</h6>
+                </div>
+            </td>
+            <td>@item.Category.CategoryName</td>
+            <td>@item.BrandName</td>
+            <td>@item.Description</td>
+            <td>@item.Price.ToString() vnđ</td>
+            <td>@item.Size</td>
+            @*<td><img src="@item.ImageUrl" alt="Product Image" /></td>*@
+            <td>
+                <div class="d-flex align-items-center">
+                    <div class="badge badge-success badge-dot m-r-10"></div>
+                    <div>In Stock</div>
+                </div>
+            </td>
+            <td class="text-right">
+                <button class="btn btn-icon btn-hover btn-sm btn-rounded pull-right">
+                    <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@item.ProductId"><i class="anticon anticon-edit"></i></a>
+                </button>
+                <button class="btn btn-icon btn-hover btn-sm btn-rounded">
+                    <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@item.ProductId"><i class="anticon anticon-delete"></i></a>
+                </button>
+            </td>
+
+        </tr>
+    }
+}

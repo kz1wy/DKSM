@@ -1,0 +1,173 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<DSKMCosmetic.Models.Product>
+
+@{
+    int currentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "List of Products " + currentPage;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h2 class="header-title">Product Management</h2>
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i></a>
+            <span class="breadcrumb-item active">Product List: page @currentPage</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row m-b-30">
+            <div class="col-lg-8">
+                <div class="d-md-flex">
+                    <div class="input-group m-b-10 m-r-15">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text border-0" id="search-addon">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </span>
+                        <input id="keyword" name="keyword" type="search" class="form-control rounded" placeholder="Search Products" aria-label="Search" aria-describedby="search-addon" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-right">
+                <a class="btn btn-primary" asp-controller="AdminProducts" asp-action="Create"> <i class="anticon anticon-plus-circle m-r-5"></i>Add Product</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover e-commerce-table" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Brand name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Size</th>
+                        @*<th>Image</th>*@
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="records_table">
+                    @if (Model != null){
+                        foreach (var item in Model){
+                            <tr>
+                                <td>@item.ProductId</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <h6 class="m-b-0 m-l-10">@item.ProductName</h6>
+                                    </div>
+                                </td>
+                                <td>@item.Category.CategoryName</td>
+                                <td>@item.BrandName</td>
+                                <td>@item.Description</td>
+                                <td>@item.Price.ToString() vnđ</td>
+                                <td>@item.Size</td>
+                                @*<td><img src="@item.ImageUrl" alt="Product Image" /></td>*@
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="badge badge-success badge-dot m-r-10"></div>
+                                        <div>In Stock</div>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <button class="btn btn-icon btn-hover btn-sm btn-rounded pull-right">
+                                        <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@item.ProductId"><i class="anticon anticon-edit"></i></a>
+                                    </button>
+                                    <button class="btn btn-icon btn-hover btn-sm btn-rounded">
+                                        <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@item.ProductId"><i class="anticon anticon-delete"></i></a>
+                                    </button>
+                                </td>
+                            
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    @if (Model.HasPreviousPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber - 1 })" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </li>
+                    }
+
+                    @for (int i = 1; i <= Model.PageCount; i++)
+                    {
+                        if (i == Model.PageNumber)
+                        {
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">@i <span class="sr-only">(current)</span></span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                            </li>
+                        }
+                    }
+
+                    @if (Model.HasNextPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber + 1 })" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            // Listen for the search form submission
+            $('#keyword').keyup(function () {
+
+                // Send an Ajax request to the server with the search keyword
+                $.ajax({
+                    url: '/Admin/Search/FindProduct/',
+                    dataType: "html",
+                    type: "POST",
+                    data: { keyword: $('#keyword').val() },
+                    async: true,
+                    success: function (result) {
+                        // Replace the search results container with the new content
+                        $("#records_table").html(result);
+                    },
+                    error: function () {
+                        alert('An error occurred while processing your request.');
+                    }
+                });
+            });
+        });
+
+    </script>
+}
