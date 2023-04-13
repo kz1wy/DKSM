@@ -1,0 +1,92 @@
+﻿@model DSKMCosmetic.ModelViews.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- breadcrumb-section start -->
+<nav class="breadcrumb-section theme1 bg-lighten2 pt-110 pb-110">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title text-center">
+                    <h2 class="title pb-4 text-dark text-capitalize">login & register</h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <ol class="breadcrumb bg-transparent m-0 p-0 align-items-center justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Register new account
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- breadcrumb-section end -->
+<!-- login area start -->
+<div class="login-register-area pt-80 pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ms-auto me-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <a href="/login.html">
+                            <h4>login</h4>
+                        </a>
+                        <a href="/register.html" class="active">
+                            <h4>register</h4>
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="lg2" class="tab-pane active">
+                            <div class="login-form-container">
+                                <div class="login-register-form">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    
+                                    <form asp-action="Register" method="post">
+                                        <input type="text"
+                                               asp-for="FirstName"
+                                               name="FirstName"
+                                               placeholder="First Name" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                        <input type="text"
+                                               asp-for="LastName"
+                                               name="LastName"
+                                               placeholder="Last Name" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                        <input asp-for="Email"
+                                               name="Email"
+                                               placeholder="Email"
+                                               type="email" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                        <input type="password"
+                                               asp-for="Password"
+                                               name="Password"
+                                               placeholder="Password" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                        <input type="password"
+                                               asp-for="ConfirmPassword"
+                                               name="ConfirmPassword"
+                                               placeholder="Confirm Password" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                                        <div class="button-box">
+                                            <button type="submit" class="btn btn-dark btn--md">
+                                                <span>Register</span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- login area end -->

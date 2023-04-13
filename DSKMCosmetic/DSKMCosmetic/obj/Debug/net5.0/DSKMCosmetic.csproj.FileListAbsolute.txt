@@ -1325,7 +1325,6 @@ D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Vi
 D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
 D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Product\Details.cshtml.g.cs
 D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
 D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Shared\_FooterPartialView.cshtml.g.cs
@@ -1352,3 +1351,10 @@ D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Ar
 D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\bin\Debug\net5.0\PagedList.dll
 D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\bin\Debug\net5.0\PagedList.Mvc.dll
 D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Areas\Admin\Views\Search\ListProductsSearchPartial.cshtml.g.cs
+D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Accounts\Index.cshtml.g.cs
+D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Accounts\Register.cshtml.g.cs
+D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Accounts\Login.cshtml.g.cs
+D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Accounts\Dashboard.cshtml.g.cs
+D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Product\List.cshtml.g.cs
+D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Product\Details.cshtml.g.cs
+D:\NET project\DKSM-Comestic\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\ShoppingCart\Index.cshtml.g.cs

@@ -1,7 +1,9 @@
 using AspNetCoreHero.ToastNotification;
 using DSKMCosmetic.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -28,13 +30,20 @@ namespace DSKMCosmetic
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+                        options =>
+                        {
+                            options.LoginPath = new PathString("/login.html");
+                            options.AccessDeniedPath = new PathString("/");
+                        });
             services.AddDbContext<dksm_cosmeticContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.BottomLeft; });
             services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
             services.AddControllersWithViews().ConfigureApiBehaviorOptions(options =>{
                options.SuppressModelStateInvalidFilter = true;
             });
-
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,9 +61,9 @@ namespace DSKMCosmetic
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
             
             app.UseEndpoints(endpoints =>

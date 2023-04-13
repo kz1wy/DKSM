@@ -7,13 +7,13 @@ SET ANSI_NULLS ON
 
 CREATE TABLE users (
     user_id INT PRIMARY KEY,
-    username VARCHAR(16) NOT NULL,
-    password VARCHAR(16) NOT NULL,
+    password VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     address nVARCHAR(300),
-    phone VARCHAR(10)
+    phone VARCHAR(10),
+    role ENUM('user', 'admin') NOT NULL DEFAULT 'user'
 );
 
 CREATE TABLE categories (
@@ -88,7 +88,7 @@ AQUA / WATER / EAU, COCAMIDOPROPYL HYDROXYSULTAINE, GLYCERIN, SODIUM LAUROYL SAR
 HƯỚNG DẪN SỬ DỤNG 
 Làm ướt da bằng nước
 Mát xa sữa rửa mặt Cerave vào da theo chuyển động tròn, nhẹ nhàng
-Rửa sạch lại với nước', 470.000, '355ml', 'https://drive.google.com/file/d/1peRIaICtFanjbsQwrmG9LbE51ldrhbij/view?usp=share_link'),
+Rửa sạch lại với nước', 470.000, '355ml', '1.jpg'),
 
 ('KDD001', 'KDD', N'Kem dưỡng ẩm Cerave Moisturizing Cream', 'Cerave', N'KEM DƯỠNG ẨM PHỤC HỒI DA CERAVE MOISTURIZING CREAM :
 CeraVe Moisturizing Cream bao gồm ba loại ceramide thiết yếu và axit hyaluronic giúp cấp ẩm hiệu quả cho da và khôi phục hàng rào bảo vệ của da. Được phát triển bởi các bác sĩ da liễu và thích hợp cho da khô và rất khô trên da mặt và da cơ thể, kem dưỡng ẩm CeraVe Moisturizing Cream giàu dưỡng chất, không nhờn, thẩm thấu nhanh. Với công nghệ MVE đã được cấp bằng sáng chế giúp giải phóng một lượng thành phần dưỡng ẩm ổn định suốt cả ngày và đêm. CeraVe Moisturizing Cream không có mùi thơm.
@@ -97,7 +97,7 @@ THÀNH PHẦN :
 AQUA / WATER / EAU, GLYCERIN, CETEARYL ALCOHOL, CAPRYLIC / CAPRIC TRIGLYCERIDE, CETYL ALCOHOL, CETEARETH-20, PETROLATUM , POTASSIUM PHOSPHATE, CERAMIDE NP, CERAMIDE AP, CERAMIDE EOP, CARBOMER, DIMETHICONE , BEHENTRIMONIUM METHOSULFATE, SODIUM LAUROYL LACTYLATE, SODIUM HYALURONATE , CHOLESTEROL, PHENOXYETHANOL, DISODIUM EDTA, DIPOTASSIUM PHOSPHATE, TOCOPHEROL, PHYTOSPHINGOSINE, XANTHAN GUM, ETHYLHEXYLGLYCERIN
 
 HƯỚNG DẪN SỬ DỤNG :
-Sử dụng ngày 2 lần sáng và tối.', 980.000, '539g', 'https://drive.google.com/file/d/18qFinUvkOE-sMR4mrxB76-Bou--vTJuV/view?usp=share_link'),
+Sử dụng ngày 2 lần sáng và tối.', 980.000, '539g', '2.jpg'),
 
 ('KCN001', 'KCN', N'Kem chống nắng Cerave Hydrating Mineral Sunscreen SPF 50', 'Cerave', N'KEM CHỐNG NẮNG DƯỠNG ẨM CERAVE HYADRATING MINERAL SPF 50:
 Kem chống nắng Cerave giúp bảo vệ da khỏi ánh nắng mặt trời, giúp cấp ẩm và dưỡng da mặt dịu nhẹ hiệu quả. CeraVe Hydrating Sunscreen Face SPF 50 là loại kem chống nắng 100% không chứa dầu với Titan Dioxide & Kẽm Oxit tạo thành một hàng rào bảo vệ trên bề mặt da giúp chống lại tia UVA và UVB mà không gây kích ứng da.
@@ -108,10 +108,10 @@ THÀNH PHẦN HOẠT TÍNH : TITANIUM DIOXIDE (9%), ZINC OXIDE (7%)
 THÀNH PHẦN KHÔNG HOẠT ĐỘNG : NƯỚC, GLYCERIN, C12-15 ALKYL BENZOATE, DIMETHICONE, ISODODECANE, STYRENE / ACRYLATES COPOLYMER, GLYCERYL STEARATE, BUTYLOCTYL SALICYLATE, DICAPRYLYL CARBONATE, PROPANEDIOL, STEARIC ACID, ALUMINIUM HYDROXIDE, PEG-100 STEARATE, SORBITAN STEARATE, NIACINAMIDE, PEG-8 LAURATE, CERAMIDE NP, CERAMIDE AP ISOSTEARATE, CARBOMER, CETEARYL ALCOHOL, CETEARETH-20, TRIETHOXYCAPRYLYLSILANE, DIMETHICONOL, SODIUM CITRATE, SODIUM LAUROYL LACTYLATE, SODIUM DODECYLBENZENESULFONATE, MYRISTIC ACID, SODIUM HYALURONATE, CHOLESTEROL, PALMITIC ACID, PHENOXYLDETHANOL, CHLORPHENESLY HYDROXYT NATRI, TOCOPHEROLLDIME METHYL CAPRYLYL GLYCOL, AXIT XITRIC, PANTHENOL, KẸO CAO SU XANTHAN, PHYTOSPHINGOSINE, AXIT POLYHYDROXYSTEARIC, POLYSORBATE 60, ETHYLHEXYLGLYCERIN
 
 HƯỚNG DẪN SỬ DỤNG:
-Dùng 15 phút trước khi ra nắng. Sử dụng lại một lần nữa nếu ra mồ hôi, hoặc sau khi bơi 40 phút để kem đạt hiệu quả tốt nhất.', 420.000, '70ml', 'https://drive.google.com/file/d/1Hi-QiFWB32KSaIy8AJOpKwNxJCocq3rA/view?usp=share_link'),
+Dùng 15 phút trước khi ra nắng. Sử dụng lại một lần nữa nếu ra mồ hôi, hoặc sau khi bơi 40 phút để kem đạt hiệu quả tốt nhất.', 420.000, '70ml', '3.jpg'),
 
 
-('SRM002', 'SRM', 'Sửa rửa mặt tẩy tế bào chết Cerave Renewing SA Cleanser 237ml', 'Cerave', N'Sữa rửa mặt Cerave Renewing SA Clenaser chứa Salicylic Axit giúp loại bỏ tế bào chết, làm mềm làn da thô ráp giúp cho làn da trở nên mịn màng, đồng thời loại bỏ dầu và bụi bẩn hiệu quả mà không để lại cảm giác khô da. Sử dụng cho da mặt và cơ thể bị mụn trứng cá.
+('SRM002', 'SRM', N'Sửa rửa mặt tẩy tế bào chết Cerave Renewing SA Cleanser 237ml', 'Cerave', N'Sữa rửa mặt Cerave Renewing SA Clenaser chứa Salicylic Axit giúp loại bỏ tế bào chết, làm mềm làn da thô ráp giúp cho làn da trở nên mịn màng, đồng thời loại bỏ dầu và bụi bẩn hiệu quả mà không để lại cảm giác khô da. Sử dụng cho da mặt và cơ thể bị mụn trứng cá.
 
 THÀNH PHẦN:
 AQUA / WATER / EAU, COCAMIDOPROPYL HYDROXYSULTAINE, GLYCERIN, SODIUM LAUROYL SARCOSINATE, NIACINAMIDE, GLUCONOLACTONE, PEG-150 PENTAERYTHRITYL TETRASTEARATE, SODIUM METHYL COCOYL TAURATE, ZEA MAYS OIL / CORN OIL, CERAMIDE NP, CERAMIDE AP, CERAMIDE EOP, CARBOMER , NATRI CLORUA, AXIT SALICYLIC, NATRI BENZOAT, NATRI LAUROYL LACTYLAT, CHOLECALCIFEROL, CHOLESTEROL, PHENOXYETHANOL, DISODIUM EDTA, TETRASODIUM EDTA, AXIT HYALURONIC THỦY PHÂN, PHYTOSPHINGOSINE, XANTHAN GUM, ETHYLHEXYLGLYCERIN
@@ -119,7 +119,7 @@ AQUA / WATER / EAU, COCAMIDOPROPYL HYDROXYSULTAINE, GLYCERIN, SODIUM LAUROYL SAR
 HƯỚNG DẪN SỬ DỤNG:
 Làm ướt da bằng nước ấm
 Mát xa sữa rửa mặt vào da theo chuyển động tròn một cách nhẹ nhàng
-Rửa sạch lại với nước', 360.000, '237ml', 'https://drive.google.com/file/d/1uTHQkzyP1TzkdigjvRKMlSbZYCYcVwfx/view?usp=share_link'),
+Rửa sạch lại với nước', 360.000, '237ml', '4.jpg'),
 
 
 ('SER001', 'SER', N'Serum cấp nước, cấp ẩm, phục hồi da Hydrating Hyaluronic Acid Serum', 'Cerave', N'SERUM DƯỠNG ẨM HYDRATING HYALURONIC SERUM
@@ -130,7 +130,7 @@ THÀNH PHẦN:
 AQUA / WATER, GLYCERIN, CETEARLYL ETHYLHEXANOATE, AMMONIUM POLYACRYLOYLDIMETHYL, PANTHENOL, CERAMIDE AP, CERAMIDE AP, CERAMIDE EOP, CAREBOMER, CETEARLIMONIUM, NATRI HYDROXIT, NATRI LAUROYL LACTYLATE, CHOLESTEROL, PHENOXYETHANOL, DISODIUM EDTA , ISOPROPYL MYRISTATE, CAPRYLYL GLYCOL, CITRIC ACID, XANTHAN GUM, PHYTOSPHINGOSINE, ETHYLHEXYLGLYCERIN
 
 HƯỚNG DẪN SỬ DỤNG:
-Thoa đều lên mặt và cổ ngày 2 lần sáng tối', 320.000, '30ml', 'https://drive.google.com/file/d/1RUQMDltWZ5Tzjii7bK5ZizwINTTLG85Y/view?usp=share_link'),
+Thoa đều lên mặt và cổ ngày 2 lần sáng tối', 320.000, '5.jpg'),
 
 
 ('SRM003', 'SRM', N'Gel Rửa Mặt La Roche-Posay Dành Cho Da Dầu, Nhạy Cảm 400ml', 'La Roche-Posay', N'Gel Rửa Mặt La Roche-Posay Dành Cho Da Dầu
@@ -140,7 +140,7 @@ Aqua / Water, Sodium Laureth Sulfate, Peg-8, Coco-Betaine, Hexylene Glycol, Sodi
 Hướng dẫn sử dụng
 Làm ẩm da với nước ấm, cho một lượng vừa đủ sản phẩm ra tay, tạo bọt, thoa sản phẩm lên mặt, tránh vùng da quanh mắt.
 Massage nhẹ nhàng, sau đó rửa sạch lại với nước và thấm khô da.
-Sử dụng hằng ngày vào buổi sáng và tối.', 476.000, '400ml', 'https://drive.google.com/file/d/1lyk2zzIGPkp0dkfFX_JgTHODgLx6rhK4/view?usp=share_link'),
+Sử dụng hằng ngày vào buổi sáng và tối.', 476.000, '400ml', '6.jpg'),
 
 
 ('SER002', 'SER', N'Serum La Roche-Posay Giúp Tái Tạo & Phục Hồi Da 30ml', 'La Roche-Posay', N'Hyalu B5 Serum là dòng serum chuyên biệt của thương hiệu La Roche-Posay, 
@@ -150,7 +150,7 @@ Aqua / Water, Glycerin, Alcohol Denat, Propylene Glycol, Panthenol, Pentylene Gl
 Hướng dẫn sử dụng
 Sử dụng vào buổi sáng & tối sau bước làm sạch.
 Vào ban ngày, nên sử dụng kèm kem chống nắng SPF 50+ & chống được tia UVA.
-Tránh thoa vùng da quanh mắt.', 960.000, '30ml', 'https://drive.google.com/file/d/1EPURUMjmFN8qcMwc24E1wX2yUlGsDkCt/view?usp=share_link'),
+Tránh thoa vùng da quanh mắt.', 960.000, '30ml', '7.jpg'),
 
 
 ('NTT001', 'NTT', N'Nước Tẩy Trang La Roche-Posay Dành Cho Da Nhạy Cảm 400ml', 'La Roche-Posay', N'Nước Tẩy Trang La Roche-Posay Dành Cho Da Nhạy Cảm 400ml
@@ -163,10 +163,10 @@ Cho nước tẩy trang La Roche-Posay Micellar Water Ultra Sensitive Skin ra b�
 Để đạt hiệu quả cao hơn và hạn chế chà xát, hãy giữ miếng bông trên da trong vài giây trước khi lau đi.
 Lặp lại cho đến khi thấy miếng bông đã sạch hoàn toàn, không còn cặn bẩn.
 Không cần rửa lại với nước.
-Được khuyên dùng để làm sạch và tẩy trang nhẹ nhàng, an toàn cho mọi loại da.', 396.000, '400ml', 'https://drive.google.com/file/d/1uznzpZzxNIUQLDHeI-5FuiRuyiZPEGvh/view?usp=share_link'),
+Được khuyên dùng để làm sạch và tẩy trang nhẹ nhàng, an toàn cho mọi loại da.', 396.000, '400ml', '8.jpg'),
 
 
-('KNC002', 'KCN', N'Kem Chống Nắng La Roche-Posay Kiểm Soát Dầu SPF50+ 50ml', 'La Roche-Posay', N'Kem Chống Nắng La Roche-Posay Kiểm Soát Dầu SPF50+ 50ml
+('KCN002', 'KCN', N'Kem Chống Nắng La Roche-Posay Kiểm Soát Dầu SPF50+ 50ml', 'La Roche-Posay', N'Kem Chống Nắng La Roche-Posay Kiểm Soát Dầu SPF50+ 50ml
 Là sản phẩm kem chống nắng dành cho làn da dầu mụn, sở hữu công nghệ cải tiến XL-Protect cùng kết cấu kem gel dịu nhẹ & không nhờn rít, giúp ngăn ngừa tia UVA/UVB + tia hồng ngoại + tác hại từ ô nhiễm, bảo vệ toàn diện cho làn da luôn khỏe mạnh.
 Thành phần
 Aqua / Water, Homosalate, Silica, Octocrylene, Ethylhexyl Salicylate, Butyl Methoxydibenzoylmethane, Ethylhexyl Triazone, Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine, Drometrizole Trisiloxane, Aluminum Starch Octenylsuccinate, Glycerin, Pentylene Glycol, Styrene/Acrylates Copolymer, Potassium Cetyl Phosphate, Dimethicone, Perlite, Propylene Glycol, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, Aluminum Hydroxide, P-Anisic Acid, Caprylyl Glycol, Disodium Edta, Inulin Lauryl Carbamate, Isopropyl Lauroyl Sarcosinate, Peg-8 Laurate, Phenoxyethanol, Scutellaria Baicalensis Extract / Scutellaria Baicalensis Root Extract, Silica Silylate, Stearic Acid, Stearyl Alcohol, Terephthalylidene Dicamphor Sulfonic Acid, Titanium Dioxide, Tocopherol, Triethanolamine, Xanthan Gum, Zinc Gluconate.
@@ -175,7 +175,7 @@ Thoa kem chống nắng vào bước cuối cùng trong quy trình chăm sóc da
 Thoa kem chống nắng ngay trước khi tiếp xúc với ánh nắng (thoa trước khoảng 20 phút).
 Thoa lại thường xuyên và nhiều lần để duy trì lớp kem bảo vệ da; đặc biệt là sau khi bơi, đổ mồ hôi nhiều.
 Lấy một lượng sản phẩm vừa đủ và chấm 5 điểm trên mặt (trán, mũi, cằm và hai bên má) sau đó thoa sản phẩm theo chiều từ trong ra ngoài và trên xuống dưới.
-', 428.000, '50ml', 'https://drive.google.com/file/d/1oNn-gib7EjnObt9J8CfgCYvAV5u6n9qz/view?usp=share_link'),
+', 428.000, '50ml', '9.jpg'),
 
 
 ('KDD002', 'KDD', N'Kem Dưỡng La Roche-Posay Làm Dịu, Hỗ Trợ Phục Hồi Da 100ml', 'La Roche-Posay', N'Kem Dưỡng La Roche-Posay Làm Dịu, Hỗ Trợ Phục Hồi Da 100ml
@@ -189,7 +189,7 @@ Dùng 2-3 lần/ ngày trên vùng da cần được phục hồi, sau khi đã
 Tuỳ vào tình trạng da, tần suất sử dụng sản phẩm sẽ tương ứng:
 Da bị kích ứng và da khô: 2 lần một ngày
 Da bị nứt nẻ: 3 lần một ngày.
-Đối với các vấn đề da khác: 2 lần một ngày.', 508.000, '100ml', 'https://drive.google.com/file/d/1WO0yLUqvmjmRm5_CCZQY7WgZHLylM9FF/view?usp=share_link'),
+Đối với các vấn đề da khác: 2 lần một ngày.', 508.000, '100ml', '10.jpg'),
 
 
 ('LOT001', 'LOT', N'Lotion La Roche-Posay Giàu Khoáng Cho Da Dầu 200ml', 'La Roche-Posay', N'Lotion La Roche-Posay Giàu Khoáng Cho Da Dầu 200ml
@@ -198,7 +198,7 @@ Thành phần
 Aqua/Water, Alcohol Denat, Glycerin, Sodium Citrate, Propylene Glycol, Peg-60 Hydrogenated Castor Oil, Disodium Edta, Capryloyl Salicylic Acid, Citric Acid, Parfum/Fragrance.
 Hướng dẫn sử dụng
 Sau khi làm sạch da bằng sữa rửa mặt, lấy một lượng vừa đủ ra bông tẩy trang và lau đều khắp mặt.
-Dùng tay vỗ nhẹ để tinh chất thấm sâu vào da. Sử dụng mỗi ngày 2 lần sáng và tối', 348.000, '200ml', 'https://drive.google.com/file/d/1pO5u5bQ-pGUbd2D2HR9lS5kmzOe-Huxq/view?usp=share_link'),
+Dùng tay vỗ nhẹ để tinh chất thấm sâu vào da. Sử dụng mỗi ngày 2 lần sáng và tối', 348.000, '200ml', '11.jpg'),
 
 ('SRM004', 'SRM', N'Sữa rửa mặt sạch sâu chứa Mandelic acid và PHA 150ml', 'Sheaghana', N'MÔ TẢ SỮA RỬA MẶT SẠCH SÂU
 Sữa rửa mặt Purifying Facial Cleanser Mandelic Acid làm sạch sâu nhưng vẫn thân thiện với lớp hàng rào bảo vệ da, loại bỏ hiệu quả bã nhờn, bụi bẩn, mỹ phẩm tồn dư trả lại làn da sạch tối ưu hóa chế độ dưỡng da phía sau. Gluconolactone (PHA) tẩy da chết nhẹ nhàng, duy trì độ ẩm mượt của một làn da khỏe mạnh. Mandelic acid được sử dụng trong sữa rửa mặt này với vai trò kháng khuẩn giúp chăm sóc cho những làn da gặp vấn đề về mụn sưng viêm, mụn do vi nấm, demodex, mụn trứng cá đỏ.
@@ -207,7 +207,7 @@ THÀNH PHẦN SỮA RỬA MẶT SẠCH SÂU
 Aqua, Disodium Cocoamphodiacetate, Cocamidopropyl Betaine, Decyl Glucoside, Propanediol, Sodium Cocoyl Apple Amino Acids, Aloe Barbadensis Leaf Water, Disodium Laureth Sulfosuccinate , Polysorbate 20, Glycerin, Gluconolactone, Mandelic Acid, Cetyl Alcohol, PEG-150 Distearate, Citric Acid, Phenethyl Alcohol , Caprylhydroxamic Acid, Boswellia Carterii Oil, Enzymes , Maltodextrin, Nelumbo Nucifera Flower Extract, Sodium Phytate.
 
 HƯỚNG DẪN SỬ DỤNG
-Làm ướt mặt, lấy lượng sữa rửa mặt vừa phải, tạo bọt mịn và massage trên da trong vòng 1 phút. Rửa sạch với nước, chú ý các đường viền chân tóc và vùng dưới cằm.', 370.000, '150ml', 'https://drive.google.com/file/d/12WeLIfanRgBJ7qjn1BTdTUoVyCFQi1he/view?usp=sharing'),
+Làm ướt mặt, lấy lượng sữa rửa mặt vừa phải, tạo bọt mịn và massage trên da trong vòng 1 phút. Rửa sạch với nước, chú ý các đường viền chân tóc và vùng dưới cằm.', 370.000, '150ml', '12.jpg'),
 
 ('SRM005', 'SRM', N'Gel rửa mặt dịu nhẹ chiết xuất rau má – Centella Deep Moisturizing Facial Cleanser', 'Sheaghana', N'MÔ TẢ GEL RỬA MẶT
 Centella Deeep Moisturizing Facial Cleanser là một sản phẩm rửa mặt cao cấp với kết cấu dạng gel. Sản phẩm vận dụng hệ chất hoạt động bề động bề mặt thiện nhiên dịu dang với làn da nhưng có khả năng tạo bọt tốt, chất bọt mềm, xốp mịn làm sạch da hiệu quả. Chiết xuất rau má được ghi nhận về khả năng làm dịu tổn thương và giảm biểu hiện của mụn viêm, giúp những làn da đang bị kích động bởi các tác nhân gây tổn thương cả thấy dễ chịu hơn. Sự góp mặt của các loại tinh dầu thiên nhiên là liệu pháp an toàn giúp kháng viêm, ngăn ngừa mụn.
@@ -216,7 +216,7 @@ THÀNH PHẦN GEL RỬA MẶT
 Aqua/Water, Disodium Cocoamphodiacetate, Sodium Methyl Cocoyl Taurate, Decyl Glucoside, Disodium Laureth Sulfosuccinate, Lauryl Glucoside, Disodium Cocoyl Glutamate, Propanediol, Polysorbate 20, PEG-150 Distearate, Calophyllum Inophyllum Seed Oil, Psidium Guajava Fruit Extract, Camellia Sinensis Leaf Extract, Rosa Centifolia Flower Extract, Nelumbo Nucifera Leaf Extract, Enzymes, Maltodextrin, Melaleuca Alternifolia (Tea Tree) oil, Centella Asiatica Extract, Betain Salicylate, Pelargonium Graveolens Flower Oil, Cymbopogon Martini Oil, Citric acid, Sodium Gluconate, Phenoxyethanol, Ethylhexylglycerin.
 
 HƯỚNG DẪN SỬ DỤNG
-Làm ướt mặt, lấy lượng sữa rửa mặt vừa phải, tạo bọt mịn và massage trên da trong vòng 1 phút. Rửa sạch với nước, chú ý các đường viền chân tóc và vùng dưới cằm.', 450.000, '150ml', 'https://drive.google.com/file/d/1cnZT2nLHF68iU9g2it3zoDvtgvRcs5V7/view?usp=sharing'),
+Làm ướt mặt, lấy lượng sữa rửa mặt vừa phải, tạo bọt mịn và massage trên da trong vòng 1 phút. Rửa sạch với nước, chú ý các đường viền chân tóc và vùng dưới cằm.', 450.000, '150ml', '13.jpg'),
 
 
 ('KDD003', 'KDD', N'Kem Retinol 0.5% chống lão hóa - Retinol Cream 0.5%', 'Sheaghana', N'MÔ TẢ RETINOL CREAM 0.5%
@@ -227,7 +227,7 @@ Aqua, Polysorbate 20, Simmondsia Chinensis Seed Oil, Propanediol, Cetearyl Alcoh
 
 HƯỚNG DẪN SỬ DỤNG
 BÔI ĐỆM: Nếu da của bạn mỏng yếu, nhạy cảm hoặc chưa dùng các loại treatment bao giờ, sau khi tẩy trang rửa mặt, dùng một hoặc một vài bước dưỡng da cơ bản, đợi các lớp này thẩm thấu hoàn toàn vào da rồi bôi đến retinol cream.
-BÔI TRẦN: Nếu da của bạn khỏe, sau khi tẩy trang rửa mặt, lau nước cân bằng da rồi đợi da khô ráo và bôi kem retinol với lượng thích hợp với nhau cầu da của bạn. Vỗ nhẹ cho tới khi kem thẩm thấu hết.', 720.000, '30ml', 'https://drive.google.com/file/d/1qH68dy4RJysDeVykP5nT_9MTWgHI-zOk/view?usp=sharing'),
+BÔI TRẦN: Nếu da của bạn khỏe, sau khi tẩy trang rửa mặt, lau nước cân bằng da rồi đợi da khô ráo và bôi kem retinol với lượng thích hợp với nhau cầu da của bạn. Vỗ nhẹ cho tới khi kem thẩm thấu hết.', 720.000, '30ml', '14.jpg'),
 
 
 ('KDD004', 'KDD', N'Tinh chất mờ thâm nám làm đều màu da – Spot Out Beauty Concentrate', 'Sheaghana', N'MÔ TẢ SẢN PHẨM SPOT OUT
@@ -237,7 +237,7 @@ THÀNH PHẦN SẢN PHẨM SPOT OUT
 Aqua, Propanediol, Ribes Nigrum Seed Oil, Octyldodecanol, Nigella Sativa Seed Oil, Rosa Canina Seed Extract, Momordica Cochinchinensis Seed Aril Oil, Diglucosyl Gallic Acid, Gluconobacter/Honey Ferment Filtrate, Octyldodecyl Oleate, Octyldodecyl Stearoyl Stearate, Psidium Guajava Fruit Extract, Camellia Sinensis Leaf Extract, Rose Extract, Nelumbo Nucifera Leaf Extract, Opuntia Ficus-Indica Seed Oil, Paeonia Suffruticosa Root Extract, Acetyl Glucosamine, Sodium Acrylates Copolymer, Lecithin, Glycerin, Rosmarinus Officinalis Leaf Oil, Melia Azadirachta Seed Oil, Daucus carota Sativa Seed Oil, Phenethyl Alcohol, Caprylhydroxamic Acid, Acacia Senegal Gum, Xanthan Gum, Tocopheryl Acetate, Rosmarinus Officinalis Leaf Extract, Solidago Virgaurea Extract, Sodium Phytate.
 
 HƯỚNG DẪN SỬ DỤNG
-Thoa lên da sau bước serum vào buổi tối hằng ngày. Vỗ nhẹ để tinh chất thẩm thấu hoàn toàn rồi mới dùng tới các sản phẩm tiếp theo.', 530.000, '30ml', 'https://drive.google.com/file/d/1u4oI1OSbt79ZDLthk7sP4AMN6SipKxjc/view?usp=sharing'),
+Thoa lên da sau bước serum vào buổi tối hằng ngày. Vỗ nhẹ để tinh chất thẩm thấu hoàn toàn rồi mới dùng tới các sản phẩm tiếp theo.', 530.000, '30ml', '15.jpg'),
 
 
 ('KDD005', 'KDD', N'Intensive Care 72h Face Cream – Kem dưỡng ẩm chuyên sâu 72h', 'Sheaghana', N'MÔ TẢ SẢN PHẨM KEM DƯỠNG ẨM
@@ -247,7 +247,7 @@ THÀNH PHẦN SẢN PHẨM KEM DƯỠNG ẨM
 Aqua/Water, Snail Secretion Filtrate, Rubus Idaeus (Raspberry) Seed Oil, Cetearyl Alcohol, Pyrus Malus (Apple) Seed Oil, Propanediol, Hydroxy Ethyl Acrylate/ Sodium Acryloyldimethyltaurate Copolymer, Saccharide Isomerate, Pyrus Malus (Apple) Juice, Prunus Persica (Peach) Juice, Triticum Vulgare (Wheat) Seed Extract, Hordeum Vulgare Seed Extract, Panax Ginseng Root Extract, Cichorium Intybus (Chicory) Root Oligosaccharides, Glycerin, Caesalpinia Spinosa Gum, Sodium Hyaluronate, Ethoxydiglycol, Allantoin, Tocopheryl Acetate, Hyaluronic Acid / Hydrolyzed Hyaluronic Acid, Hydrogenated Polydecene, Polysorbate 80, Fragrance, Citric Acid, Calcium Gluconate, Diazolidinyl Urea, Iodopropynyl Butylcarbamate, Polyquaternium-10, Sodium Citrate, Glyceryl Caprylate, Glyceryl Undecylenate, Sodium Benzoate, Gluconolactone.
 
 HƯỚNG DẪN SỬ DỤNG
-Sau khi vệ sinh da mặt và sử dụng các bước serum chuyên dụng, lấy một lượng sản phẩm vừa đủ, bôi nhẹ nhàng đều khắp da mặt, vỗ nhẹ cho kem nhanh thấm vào da.', 350.000, '30ml', 'https://drive.google.com/file/d/1YX3NDtm21pRi75OMk5xmKMfj_yKFr34n/view?usp=sharing'),
+Sau khi vệ sinh da mặt và sử dụng các bước serum chuyên dụng, lấy một lượng sản phẩm vừa đủ, bôi nhẹ nhàng đều khắp da mặt, vỗ nhẹ cho kem nhanh thấm vào da.', 350.000, '30ml', '16.jpg'),
 
 
 ('SRM007', 'SRM', N'Sữa rửa mặt dịu nhẹ Defense Hydrating Gel-To-Cream Cleaser', 'Paula''s Choice', N'Sản phẩm Defense Hydrating Gel-To-Cream Cleanser có khả năng loại bỏ bụi bẩn, dầu thừa và cặn makeup một cách tối ưu đồng thời giúp tăng cường bảo vệ da trước những yếu tố có ảnh hưởng xấu từ môi trường.
@@ -258,7 +258,7 @@ Water, Sodium Cocoyl Glycinate (cleansing agent), Cocamidopropyl Hydroxysultaine
 KHẮC PHỤC VẤN ĐỀ:
 Da lão hóa sớm
 Da chịu tổn thương bởi môi trường
-Da nhạy cảm, kích ứng', 629.000, '198ml', 'https://drive.google.com/file/d/1WdWLFBd357joNIVRyKS0v2uTxzCReUVB/view?usp=share_link'),
+Da nhạy cảm, kích ứng', 629.000, '198ml', '17.jpg'),
 
 
 ('KCN003', 'KCN', N'Kem chống nắng dạng sữa cho da mụn Clear Ultra-Light Daily Hydrating Fluid SPF 30 60ML', 'Paula''s Choice', N'Kem dưỡng chống nắng với kết cấu dạng lỏng không gây bóng nhờn có khả năng giảm thiểu sự xuất hiện của lỗ chân lông và giúp bảo vệ da khỏi tác hại của ánh nắng mặt trời để duy trì vẻ ngoài đẹp, khỏe mạnh và cho phép làn da thực sự cải thiện.
@@ -269,7 +269,7 @@ Công thức dưỡng ẩm nhẹ làm giảm khô và bong tróc da
 Sử dụng như bước cuối cùng trong quy trình chăm sóc da buổi sáng của bạn.
 
 THÀNH PHẨM SẢN PHẨM:
-Water⁠, Octinoxate⁠, Glycerin⁠, Octisalate⁠, Silica⁠, Octocrylene⁠, Avobenzone⁠, Dimethicone⁠, Tocopherol⁠, Chamomilla Recutita (Matricaria) Flower Extract ⁠, Vitis Vinifera (Grape) Seed Extract⁠, Camellia Sinensis Leaf Extract⁠, Camellia Oleifera (Green Tea) Leaf Extract⁠, Peucedanum Graveolens (Dill) Extract⁠, Sambucus Nigra Fruit Extract⁠, Oat Bran Extract⁠, Punica Granatum Fruit Extract⁠, Lycium Barbarum Fruit Extract⁠, Hydrogenated Lecithin⁠, Titanium Dioxide⁠, Dimethicone/Vinyl Dimethicone Crosspolymer⁠, Diethylhexyl Syringylidenemalonate⁠, Hydroxyethyl Acrylate/Sodium Acryloyldimethyl Taurate Copolymer⁠, Xanthan Gum⁠, Sodium Carbomer⁠, Benzyl Alcohol⁠, Sodium Benzoate⁠, Potassium Sorbate⁠, Phenoxyethanol.', 849.000, '60ml', 'https://drive.google.com/file/d/169EcFYsqkWv0dWEjONMRpyu7LpTLTkHC/view?usp=share_link'),
+Water⁠, Octinoxate⁠, Glycerin⁠, Octisalate⁠, Silica⁠, Octocrylene⁠, Avobenzone⁠, Dimethicone⁠, Tocopherol⁠, Chamomilla Recutita (Matricaria) Flower Extract ⁠, Vitis Vinifera (Grape) Seed Extract⁠, Camellia Sinensis Leaf Extract⁠, Camellia Oleifera (Green Tea) Leaf Extract⁠, Peucedanum Graveolens (Dill) Extract⁠, Sambucus Nigra Fruit Extract⁠, Oat Bran Extract⁠, Punica Granatum Fruit Extract⁠, Lycium Barbarum Fruit Extract⁠, Hydrogenated Lecithin⁠, Titanium Dioxide⁠, Dimethicone/Vinyl Dimethicone Crosspolymer⁠, Diethylhexyl Syringylidenemalonate⁠, Hydroxyethyl Acrylate/Sodium Acryloyldimethyl Taurate Copolymer⁠, Xanthan Gum⁠, Sodium Carbomer⁠, Benzyl Alcohol⁠, Sodium Benzoate⁠, Potassium Sorbate⁠, Phenoxyethanol.', 849.000, '60ml', '18.jpg'),
 
 
 ('KCN004', 'KCN', N'Kem chống nắng chống lão hóa Resist Skin Restoring Moisturizer Broad Spectrum SPF 50 15ml', 'Paula''s Choice', N'Kem dưỡng chống nắng chống lão hoá Resist Skin Restoring Moisturizer Broad Spectrum SPF 50 bảo vệ da khỏi tác hại của tia cực tím đồng thời cung cấp lượng ẩm dồi dào và khả năng bảo vệ da mạnh mẽ với các thành phần tuyệt vời như Niacinamide, bơ hạt mỡ và cam thảo cho làn da trẻ trung và mịn màng không tì vết.
@@ -279,14 +279,14 @@ Duy trì độ ẩm mịn trên da trong suốt thời gian dài.
 
 THÀNH PHẦN SẢN PHẨM:
 Active Ingredients: Avobenzone 3%; Homosalate 5%; Octinoxate 7.50%; Octisalate 5%; Oxybenzone 5% (sunscreen actives). Inactive Ingredients: Water (Aqua), Silica (opacifier and texture enhancer), Glycerin (hydration), Cetearyl Alcohol (texture enhancer), Dimethicone (hydration), Butylene Glycol, Pentylene Glycol (hydration), Potassium Cetyl Phosphate (emulsifier), Cyclopentasiloxane (hydration), Pyrus Malus (Apple) Fruit Extract (skin-restoring), VP/Eicosene Copolymer (texture enhancer), Butyrospermum Parkii (Shea) Butter (emollient), 
-Allantoin (skin soothing), Niacinamide (skin-restoring), Tocopherol (vitamin E/antioxidant), Glycyrrhiza Glabra (Licorice) Root Extract (skin soothing), Aloe Barbadensis Leaf Juice (hydration, soothing), Atractylodes Macrocephala Root Powder (antioxidant), Avena Sativa (Oat) Kernel Extract (skin soothing), Coffea Arabica (Coffee) Seed Extract, Portulaca Oleracea Extract, Mahonia Aquifolium Root Extract, Diethylhexyl Syringylidenemalonate (antioxidants), Sarcosine, Capryloyl Glycine, Maltooligosyl Glucoside, Cetearyl Glucoside (skin softeners), Dimethiconol (texture enhancer), Acrylates/C10-30 Alkyl Acrylate Crosspolymer (stabilizer), Hydrogenated Starch Hydrolysate (hydration), Hexylene Glycol (texture enhancer), 4-T-Butylcyclohexanol (emollient), Glyceryl Stearate, PEG-100 Stearate (texture enhancers), Sodium Hydroxide (pH adjuster), Xanthan Gum (stabilizer), Disodium EDTA (chelating agent), Phenoxyethanol, Caprylyl Glycol (preservatives), Ethylhexylglycerin (skin softening).', 339.000, '15ml', 'https://drive.google.com/file/d/1siC327LgCdOKplzqlR7tvld3Jij3kWJS/view?usp=share_link');
+Allantoin (skin soothing), Niacinamide (skin-restoring), Tocopherol (vitamin E/antioxidant), Glycyrrhiza Glabra (Licorice) Root Extract (skin soothing), Aloe Barbadensis Leaf Juice (hydration, soothing), Atractylodes Macrocephala Root Powder (antioxidant), Avena Sativa (Oat) Kernel Extract (skin soothing), Coffea Arabica (Coffee) Seed Extract, Portulaca Oleracea Extract, Mahonia Aquifolium Root Extract, Diethylhexyl Syringylidenemalonate (antioxidants), Sarcosine, Capryloyl Glycine, Maltooligosyl Glucoside, Cetearyl Glucoside (skin softeners), Dimethiconol (texture enhancer), Acrylates/C10-30 Alkyl Acrylate Crosspolymer (stabilizer), Hydrogenated Starch Hydrolysate (hydration), Hexylene Glycol (texture enhancer), 4-T-Butylcyclohexanol (emollient), Glyceryl Stearate, PEG-100 Stearate (texture enhancers), Sodium Hydroxide (pH adjuster), Xanthan Gum (stabilizer), Disodium EDTA (chelating agent), Phenoxyethanol, Caprylyl Glycol (preservatives), Ethylhexylglycerin (skin softening).', 339.000, '15ml', '19.jpg');
 
 
 
-INSERT INTO users (user_id, username, password, email, first_name, last_name, address, phone)
+INSERT INTO users (user_id, password, email, first_name, last_name, address, phone, role)
 VALUES
-(1, 'khoa123', '123456', 'khoa123@gmail.com', 'Nguyen', 'Khoa', N'123 Nguyễn Văn Linh, TP Hồ Chí Minh', '0123456789'),
-(2, 'dat456', '123456', 'dat456@gmail.com', 'Tran', 'Dat', N'123 Nguyễn Văn Linh, TP Hồ Chí Minh', '0373456798');
+(1, 'E10ADC3949BA59ABBE56E057F20F883E', 'khoa123@gmail.com', 'Nguyen', 'Khoa', N'123 Nguyễn Văn Linh, TP Hồ Chí Minh', '0123456789', 'admin'),
+(2, 'E10ADC3949BA59ABBE56E057F20F883E', 'dat456@gmail.com', 'Tran', 'Dat', N'123 Nguyễn Văn Linh, TP Hồ Chí Minh', '0373456798', 'user');
 
 INSERT INTO cart_items (cart_item_id, user_id, product_id, quantity)
 VALUES

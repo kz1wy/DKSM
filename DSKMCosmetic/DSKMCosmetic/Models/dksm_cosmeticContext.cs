@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using DSKMCosmetic.ModelViews;
 
 #nullable disable
 
@@ -251,11 +252,6 @@ namespace DSKMCosmetic.Models
                     .IsUnicode(false)
                     .HasColumnName("phone");
 
-                entity.Property(e => e.Username)
-                    .IsRequired()
-                    .HasMaxLength(16)
-                    .IsUnicode(false)
-                    .HasColumnName("username");
             });
             
 
@@ -263,5 +259,9 @@ namespace DSKMCosmetic.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<DSKMCosmetic.ModelViews.RegisterViewModel> RegisterViewModel { get; set; }
+
+        public DbSet<DSKMCosmetic.ModelViews.CartItemViewModel> CartItemViewModel { get; set; }
     }
 }
