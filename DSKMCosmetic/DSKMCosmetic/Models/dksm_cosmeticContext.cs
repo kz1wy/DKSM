@@ -262,6 +262,5 @@ namespace DSKMCosmetic.Models
 
         public DbSet<DSKMCosmetic.ModelViews.RegisterViewModel> RegisterViewModel { get; set; }
 
-        public DbSet<DSKMCosmetic.ModelViews.CartItemViewModel> CartItemViewModel { get; set; }
     }
 }

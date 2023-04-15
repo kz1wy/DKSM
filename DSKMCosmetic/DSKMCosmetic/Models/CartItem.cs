@@ -14,5 +14,6 @@ namespace DSKMCosmetic.Models
 
         public virtual Product Product { get; set; }
         public virtual User User { get; set; }
+        public double TotalPrice => Quantity * (double)Product.Price;
     }
 }

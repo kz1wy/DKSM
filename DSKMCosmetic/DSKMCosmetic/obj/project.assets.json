@@ -7756,11 +7756,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\NET project\\DKSM-Comestic\\DSKMCosmetic\\DSKMCosmetic\\DSKMCosmetic.csproj",
+      "projectUniqueName": "D:\\NET project\\DKSM\\DSKMCosmetic\\DSKMCosmetic\\DSKMCosmetic.csproj",
       "projectName": "DSKMCosmetic",
-      "projectPath": "D:\\NET project\\DKSM-Comestic\\DSKMCosmetic\\DSKMCosmetic\\DSKMCosmetic.csproj",
+      "projectPath": "D:\\NET project\\DKSM\\DSKMCosmetic\\DSKMCosmetic\\DSKMCosmetic.csproj",
       "packagesPath": "C:\\Users\\Duy\\.nuget\\packages\\",
-      "outputPath": "D:\\NET project\\DKSM-Comestic\\DSKMCosmetic\\DSKMCosmetic\\obj\\",
+      "outputPath": "D:\\NET project\\DKSM\\DSKMCosmetic\\DSKMCosmetic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Duy\\AppData\\Roaming\\NuGet\\NuGet.Config",

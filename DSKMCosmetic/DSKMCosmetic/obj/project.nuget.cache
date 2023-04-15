@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9Fb68M1RwZ8Vb9WDLF/g0OqcGJ2cL9/VNeIqYn4L6oqFl88MRhYt6yivqn26CfrvjwXi19o6ER896i0M1W19DQ==",
+  "dgSpecHash": "rsJaCeiWZuuVLSV7ckkfeZd3Ygn54MR0MRHDTbVRYfPHD/lI7nSgQYmbmyDEsbObUKLHnDM3B1/CPn5DcT1BQA==",
   "success": true,
-  "projectFilePath": "D:\\NET project\\DKSM-Comestic\\DSKMCosmetic\\DSKMCosmetic\\DSKMCosmetic.csproj",
+  "projectFilePath": "D:\\NET project\\DKSM\\DSKMCosmetic\\DSKMCosmetic\\DSKMCosmetic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Duy\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\Duy\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

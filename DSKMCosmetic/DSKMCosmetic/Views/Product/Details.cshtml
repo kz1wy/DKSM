@@ -81,7 +81,7 @@
                     <div class="product-footer">
                         <div class="product-count style d-flex flex-column flex-sm-row mt-30 mb-30">
                             <div class="count d-flex">
-                                <input type="number" min="1" max="10" step="1" value="1" />
+                                <input id="quantity" type="number" min="1" max="10" step="1" value="1" />
                                 <div class="button-group">
                                     <button class="count-btn increment">
                                         <i class="fas fa-chevron-up"></i>
@@ -92,7 +92,7 @@
                                 </div>
                             </div>
                             <div>
-                                <button class="btn btn-dark btn--xl mt-5 mt-sm-0">
+                                <button id="add-to-cart" class="btn btn-dark btn--xl mt-5 mt-sm-0">
                                     <span class="me-2"><i class="ion-android-add"></i></span>
                                     Add to cart
                                 </button>
@@ -126,3 +126,33 @@
     </div>
 </section>
 <!-- product-single end -->
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('#add-to-cart').click(function (e) {
+                e.preventDefault();
+                var quantity = $('#quantity').val();
+                var productId = '@Model.ProductId';
+                $.ajax({
+                    url: "@Url.Action("AddToCart", "ShoppingCart", new { productId = Model.ProductId })",
+                    type: "POST",
+                    data: {
+                        productId: productId,
+                        quantity: quantity // add the quantity parameter here
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        // update the cart count in the navbar
+                        $(".cart-count").text(response.cartItemCount);
+                        // show the success message
+                        notyf.success(response.message);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+}

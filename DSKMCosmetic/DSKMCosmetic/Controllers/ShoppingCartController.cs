@@ -10,110 +10,91 @@ using System.Linq;
 
 namespace DSKMCosmetic.Controllers
 {
+    [Route("shoppingcart")]
     public class ShoppingCartController : Controller
     {
         private readonly dksm_cosmeticContext _context;
-        public INotyfService _notifyService { get; }
+        private readonly INotyfService _notyfService;
+
         public ShoppingCartController(dksm_cosmeticContext context, INotyfService notyfService)
         {
             _context = context;
-            _notifyService = notyfService;
-        }
-        public List<CartItem> Cart
-        {
-            get
-            {
-                var cart = HttpContext.Session.Get<List<CartItem>>("Cart");
-                if (cart == default(List<CartItem>))
-                {
-                    cart = new List<CartItem>();
-                }
-                return cart;
-            }
+            _notyfService = notyfService;
         }
 
-        [HttpPost]
-        [Route("cart/add")]
-        // Add item to cart
-        public IActionResult AddToCart(string id, int? amount)
+        public IActionResult Index()
         {
-            try
+            var cartItems = HttpContext.Session.Get<List<CartItem>>("Cart") ?? new List<CartItem>();
+            var viewModel = new ShoppingCartViewModel
             {
-                List<CartItem> cart = Cart;
-                // Check if item is already in cart
-                CartItem item = cart.SingleOrDefault(i => i.Product.ProductId == id);
-                if (item != null)
+                CartItems = cartItems,
+                CartTotal = cartItems.Sum(item => item.TotalPrice)
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost("addtocart/{productId}")]
+        public IActionResult AddToCart(string productId, int quantity)
+        {
+            // Check if user is authenticated
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Accounts"); // Redirect to login page
+            }
+            var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
+
+            if (product == null)
+            {
+                _notyfService.Error("Product not found");
+                return RedirectToAction("Index");
+            }
+
+            var cartItems = HttpContext.Session.Get<List<CartItem>>("Cart") ?? new List<CartItem>();
+            var cartItem = cartItems.FirstOrDefault(item => item.ProductId == productId);
+
+            if (cartItem == null)
+            {
+                cartItem = new CartItem
                 {
-                    if (amount.HasValue)
-                    {
-                        item.Quantity = amount.Value;
-                    }
-                    else
-                    {
-                        item.Quantity++;
-                    }
+                    ProductId = product.ProductId,
+                    Quantity = quantity,
+                    Product = product
+                };
+                cartItems.Add(cartItem);
+            }
+            else
+            {
+                cartItem.Quantity += quantity;
+            }
+
+            HttpContext.Session.Set("Cart", cartItems);
+            _notyfService.Success("Item successfully added to cart");
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost("removefromcart/{productId}")]
+        public IActionResult RemoveFromCart(string productId)
+        {
+            var cartItems = HttpContext.Session.Get<List<CartItem>>("Cart") ?? new List<CartItem>();
+            var cartItem = cartItems.FirstOrDefault(item => item.ProductId == productId);
+
+            if (cartItem != null)
+            {
+                if (cartItem.Quantity > 1)
+                {
+                    cartItem.Quantity--;
                 }
                 else
                 {
-                    // Get product from database
-                    Product product = _context.Products.FirstOrDefault(p => p.ProductId == id);
-                    item = new CartItem
-                    {
-                        Quantity = amount.HasValue ? amount.Value : 1,
-                        Product = product
-                    };
-                    cart.Add(item);
+                    cartItems.Remove(cartItem);
                 }
-
-                // Save cart items to session
-                HttpContext.Session.Set<List<CartItem>>("CartItems", cart);
-
-                return Json(new { success = true });
             }
-            catch
-            {
-                return Json(new { success = false });
-            }
+
+            HttpContext.Session.Set("Cart", cartItems);
+            _notyfService.Success("Item removed from cart");
+
+            return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        [Route("cart/remove")]
-        public IActionResult RemoveFromCart(string productId)
-        {
-            try
-            {
-                // Get the cart from the session
-                List<CartItem> cart = Cart;
-
-                CartItem cartItem = cart.SingleOrDefault(ci => ci.Product.ProductId == productId);
-
-                if (cartItem != null)
-                {
-                    // If the cart item is found, remove it from the cart
-                    cart.Remove(cartItem);
-
-                }
-
-                HttpContext.Session.Set<List<CartItem>>("CartItems", cart);
-                return Json(new { success = true });
-            }
-            catch
-            {
-                return Json(new { success = false });
-            }
-        }
-
-        [Route("/cart.html", Name = "Cart")]
-        // Get cart items from session and display in view
-        public IActionResult Index()
-        {
-            List<string> lsProductIds = new List<string>();
-            var lsCart = Cart;
-            //foreach (var item in lsCart)
-            //{
-            //    lsProductIds.Add(item.Product.ProductId);
-            //}
-            return View(Cart);
-        }
     }
 }

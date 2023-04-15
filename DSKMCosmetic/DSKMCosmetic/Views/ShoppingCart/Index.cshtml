@@ -1,4 +1,4 @@
-﻿@model List<DSKMCosmetic.ModelViews.CartItemViewModel>
+﻿@model DSKMCosmetic.ModelViews.ShoppingCartViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -43,14 +43,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(Model != null && Model.Count() > 0){
-                                foreach (var item in Model){
+                            @if(Model != null){
+                                foreach (var item in Model.CartItems){
                                     <tr>
                                         <th class="text-center" scope="row">
-                                            <img src="~/images/products/@item.product.ImageUrl" alt="img" />
+                                            <img src="~/images/products/@item.Product.ImageUrl" alt="img" />
                                         </th>
                                         <td class="text-center">
-                                            <span class="whish-title">@item.product.ProductName</span>
+                                            <span class="whish-title">@item.Product.ProductName</span>
                                         </td>
                                         <td class="text-center">
                                             <span class="badge badge-danger position-static">In Stock</span>
@@ -58,18 +58,20 @@
                                         <td class="text-center">
                                             <div class="product-count style">
                                                 <div class="count d-flex justify-content-center">
-                                                    <input value="@item.amount">
+                                                    <input value="@item.Quantity">
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            <span class="whish-list-price"> @item.product.Price vnđ</span>
+                                            <span class="whish-list-price"> @item.Product.Price vnđ</span>
                                         </td>
 
                                         <td class="text-center">
-                                            <a href="#">
-                                                <span class="trash"><i class="fas fa-trash-alt"></i> </span>
-                                            </a>
+                                            <form action="/ShoppingCart/RemoveFromCart/@item.Product.ProductId" method="post">
+                                                <button type="submit" class="btn btn-link">
+                                                    <span class="trash"><i class="fas fa-trash-alt"></i></span>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 }
@@ -162,7 +164,7 @@
                             <div class="your-order-total mb-0">
                                 <ul>
                                     <li class="order-total">Total</li>
-                                    <li>@Model.Sum(x => x.TotalPrice).ToString() vnđ</li>
+                                    <li>TotalPrice.ToString() vnđ</li>
                                 </ul>
                             </div>
                         </div>
