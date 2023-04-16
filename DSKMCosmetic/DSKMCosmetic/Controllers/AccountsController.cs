@@ -42,10 +42,8 @@ namespace DSKMCosmetic.Controllers
 
             var user = _context.Users
                     .Include(u => u.Orders)
-                    .ThenInclude(o => o.OrderItems)
-                    .ThenInclude(oi => oi.Product)
                     .AsNoTracking()
-                    .SingleOrDefault(x => x.UserId == Convert.ToInt32(id));
+                    .SingleOrDefault(x => x.UserId == int.Parse(id));
             
             if (user != null)
             {

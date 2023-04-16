@@ -60,6 +60,7 @@ namespace DSKMCosmetic.Controllers
             string userId = HttpContext.User.FindFirstValue("UserId");
             var user = _context.Users.SingleOrDefault(u => u.UserId.ToString() == userId);
             // Create a new order in the database
+
             var order = new Order
             {
                 OrderId = Utilities.GenerateUserId(_context),
@@ -67,7 +68,7 @@ namespace DSKMCosmetic.Controllers
                 OrderDate = DateTime.Now,
                 TotalAmount = totalAmount,
                 Status = "Pending",
-                ShippingAddress = model.ShippingAddress
+                ShippingAddress = model.ShippingAddress == null? "abc 123" : model.ShippingAddress.ToString(),
             };
             _context.Orders.Add(order);
             _context.SaveChanges();
@@ -96,13 +97,11 @@ namespace DSKMCosmetic.Controllers
                 OrderDate = order.OrderDate,
                 TotalAmount = order.TotalAmount,
                 Status = order.Status,
-                ShippingAddress = order.ShippingAddress,
             };
 
             // Redirect the user to the order confirmation page
-            return View(orderViewModel);
+            return RedirectToAction("Dashboard", "Accounts");
         }
-
 
     }
 }
