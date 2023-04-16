@@ -1,12 +1,13 @@
-Introduction:
+**Introduction:**
 This is an ASP.NET 5 MVC project designed for an online cosmetics store named DKSM. The project aims to provide a user-friendly interface to browse and purchase cosmetics products online. It includes features such as product catalog, shopping cart, checkout, order history, and account management.
-
-Requirements:
+**
+Requirements:**
 
 Visual Studio 2019 or later
 .NET 5 SDK or later
 Microsoft SQL Server Express or higher
-Installation:
+
+**Installation:**
 
 Clone or download the project from the repository.
 Open the solution file "DKSM.sln" in Visual Studio.
@@ -14,6 +15,7 @@ Restore the NuGet packages used in the project.
 Update the connection string in the "appsettings.json" file to match your SQL Server instance.
 Run the migration command "Update-Database" in the Package Manager Console to create the database schema.
 Build and run the project.
+
 Usage:
 
 Home: The landing page of the web application with a banner and featured products.
