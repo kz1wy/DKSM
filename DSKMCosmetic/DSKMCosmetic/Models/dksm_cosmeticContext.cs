@@ -30,6 +30,7 @@ namespace DSKMCosmetic.Models
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("Server=CLOUD;Database=dksm_cosmetic;User ID=duy;pwd='cho123456789';Integrated Security=True;");
+                optionsBuilder.EnableSensitiveDataLogging();
             }
         }
 

@@ -36,19 +36,13 @@ namespace DSKMCosmetic.Controllers
         [HttpPost("addtocart/{productId}")]
         public IActionResult AddToCart(string productId, int quantity)
         {
-            // Check if user is authenticated
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Accounts"); // Redirect to login page
-            }
             var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
 
             if (product == null)
             {
                 _notyfService.Error("Product not found");
                 return RedirectToAction("Index");
-            }
-
+            } 
             var cartItems = HttpContext.Session.Get<List<CartItem>>("Cart") ?? new List<CartItem>();
             var cartItem = cartItems.FirstOrDefault(item => item.ProductId == productId);
 
@@ -72,6 +66,7 @@ namespace DSKMCosmetic.Controllers
 
             return RedirectToAction("Index");
         }
+
         [HttpPost("removefromcart/{productId}")]
         public IActionResult RemoveFromCart(string productId)
         {

@@ -164,14 +164,14 @@
                             <div class="your-order-total mb-0">
                                 <ul>
                                     <li class="order-total">Total</li>
-                                    <li>TotalPrice.ToString() vnđ</li>
+                                    <li>@Model.TotalPrice.ToString().000 vnđ</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="Place-order mt-25">
                         <a class="btn btn--lg btn-primary me-3" href="#">update cart</a>
-                        <a class="btn btn--lg btn-primary my-2 my-sm-0" href="#">checkout</a>
+                        <a class="btn btn--lg btn-primary my-2 my-sm-0" asp-controller="Checkout" asp-action="Index">checkout</a>
                     </div>
                 </div>
             </div>

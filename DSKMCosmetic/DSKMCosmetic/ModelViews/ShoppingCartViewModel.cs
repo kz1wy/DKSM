@@ -11,6 +11,27 @@ namespace DSKMCosmetic.ModelViews
 
         public virtual Product Product { get; set; }
         public virtual User User { get; set; }
-        public double TotalPrice => Quantity * (double)Product.Price;
+        public double TotalPrice
+        {
+            get
+            {
+                if (CartItems == null)
+                {
+                    return 0.0;
+                }
+
+                double total = 0.0;
+                foreach (var item in CartItems)
+                {
+                    if (item.Product != null)
+                    {
+                        total += item.Quantity * (double)item.Product.Price;
+                    }
+                }
+
+                return total;
+            }
+        }
+
     }
 }

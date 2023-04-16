@@ -44,6 +44,18 @@ namespace DSKMCosmetic
                options.SuppressModelStateInvalidFilter = true;
             });
             services.AddSession();
+            services.AddDbContext<dksm_cosmeticContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                .EnableSensitiveDataLogging()
+            );
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(200);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
