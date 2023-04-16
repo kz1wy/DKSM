@@ -20,12 +20,19 @@ Build and run the project.
 **Usage:**
 
 Home: The landing page of the web application with a banner and featured products.
+
 Shop: The page that displays all the products in the store with filtering and sorting options.
+
 Product Detail: The page that shows the details of a specific product and allows the user to add it to the cart.
+
 Cart: The page that displays the items in the cart and allows the user to adjust the quantity or remove them.
+
 Checkout: The page that collects the user's shipping and billing information and displays the order summary.
+
 Order History: The page that shows the user's previous orders and their details.
-Account: The page that allows the user to manage their personal information and password.
+
+Account: The page that allows the user to manage their personal information and password, include Admin and User role.
+
 Contributing:
 This project is open to contributions, and you are welcome to submit pull requests for bug fixes, features, and improvements. Please follow the coding standards and write clear commit messages.
 
