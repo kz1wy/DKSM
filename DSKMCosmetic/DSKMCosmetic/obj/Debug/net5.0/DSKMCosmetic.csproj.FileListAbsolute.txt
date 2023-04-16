@@ -1823,3 +1823,4 @@ D:\NET project\DKSM\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\DSKMCosmetic.pdb
 D:\NET project\DKSM\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\DSKMCosmetic.genruntimeconfig.cache
 D:\NET project\DKSM\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\ref\DSKMCosmetic.dll
 D:\NET project\DKSM\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Views\Checkout\Index.cshtml.g.cs
+D:\NET project\DKSM\DSKMCosmetic\DSKMCosmetic\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminOrders\Index.cshtml.g.cs

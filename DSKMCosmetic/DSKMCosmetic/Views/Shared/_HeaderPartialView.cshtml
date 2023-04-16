@@ -52,8 +52,16 @@
                                 <ul class="topnav-submenu dropdown-menu"
                                     aria-labelledby="dropdown1">
                                     @if (User.Identity.IsAuthenticated){
-                                        <li><a asp-controller="Accounts" asp-action="Dashboard">My account</a></li>
-                                        <li><a asp-controller="Accounts" asp-action="Logout">Log out</a></li>
+                                        @if (User.IsInRole("admin")){
+                                            <li><a asp-controller="Accounts" asp-action="Dashboard">My account</a></li>
+                                            <li><a asp-controller="Accounts" asp-action="Logout">Log out</a></li>
+                                            <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">Go to Admin</a></li>
+                                        }
+                                        else{
+                                            <li><a asp-controller="Accounts" asp-action="Dashboard">My account</a></li>
+                                            <li><a asp-controller="Accounts" asp-action="Logout">Log out</a></li>
+                                        }
+                                        
                                     }
                                     else{
                                         <li><a href="/login.html">Login</a></li>
