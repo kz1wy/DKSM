@@ -50,7 +50,7 @@ namespace DSKMCosmetic.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(OrderViewModel model)
+        public IActionResult Index(OrderViewModel model, string ShippingAddress)
         {
             // Retrieve the current user's cart items from the database
             var cartItems = HttpContext.Session.Get<List<CartItem>>("Cart");
@@ -68,7 +68,7 @@ namespace DSKMCosmetic.Controllers
                 OrderDate = DateTime.Now,
                 TotalAmount = totalAmount,
                 Status = "Pending",
-                ShippingAddress = model.ShippingAddress == null? "abc 123" : model.ShippingAddress.ToString(),
+                ShippingAddress = ShippingAddress == null ? "abc 123" : ShippingAddress
             };
             _context.Orders.Add(order);
             _context.SaveChanges();
